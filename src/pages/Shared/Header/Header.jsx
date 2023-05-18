@@ -13,15 +13,15 @@ const Header = () => {
                 <div className='relative flex items-center justify-between'>
                     <Link
                         to='/'
-                        aria-label='HouseOfTroyCars'
-                        title='HouseOfTroyCars'
+                        aria-label='HouseOfToyCars'
+                        title='HouseOfToyCars'
                         className='inline-flex items-center'
                     >
                         <div className='flex items-center justify-center w-12 h-12 rounded-full'>
                            <img src={logo} alt="" />
                         </div>
                         <span className='ml-2 text-xl font-bold tracking-wide text-gray-800 '>
-                        House Of Troy Cars
+                        House Of Toy Cars
                         </span>
                     </Link>
                     <ul className='items-center hidden space-x-8 lg:flex'>

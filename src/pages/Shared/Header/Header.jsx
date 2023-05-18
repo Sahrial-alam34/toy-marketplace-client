@@ -9,7 +9,7 @@ const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     return (
    
-            <div className='px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8'>
+            <div className='px-4 py-5 mx-auto bg-base-200 sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8'>
                 <div className='relative flex items-center justify-between'>
                     <Link
                         to='/'
@@ -20,7 +20,7 @@ const Header = () => {
                         <div className='flex items-center justify-center w-12 h-12 rounded-full'>
                            <img src={logo} alt="" />
                         </div>
-                        <span className='ml-2 text-xl font-bold tracking-wide text-gray-800 '>
+                        <span className='ml-2 text-xl font-bold tracking-wide bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text '>
                         House Of Toy Cars
                         </span>
                     </Link>
@@ -176,6 +176,9 @@ const Header = () => {
                             </div>
                         )}
                     </div>
+                </div>
+                <div>
+               
                 </div>
             </div>
         )

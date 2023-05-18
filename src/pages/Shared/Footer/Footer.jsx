@@ -1,4 +1,5 @@
 import logo from '../../../assets/logo/toycars.jpg'
+import { FaFacebook,FaInstagram,FaTwitter } from "react-icons/fa";
 const Footer = () => {
     return (
         <footer className="footer p-10 bg-base-200 text-base-content">
@@ -20,6 +21,12 @@ const Footer = () => {
                 <a className="link link-hover">Contact</a>
                 <a className="link link-hover">Jobs</a>
                 <a className="link link-hover">Press kit</a>
+            </div>
+            <div>
+                <span className="footer-title">Social Media</span>
+                <a className="link link-hover"><FaFacebook className='h-[20px] w-[60px]' /></a>
+                <a className="link link-hover"><FaInstagram className='h-[20px] w-[60px]' /></a>
+                <a className="link link-hover"><FaTwitter className='h-[20px] w-[60px]' /></a>
             </div>
             <div>
                 <span className="footer-title">Legal</span>

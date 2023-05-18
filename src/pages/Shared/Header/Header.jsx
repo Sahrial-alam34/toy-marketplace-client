@@ -46,17 +46,39 @@ const Header = () => {
 
 
                     <NavLink
-                        to='/shop'
-                        aria-label='Shop'
-                        title='Shop'
+                        to='/allToys'
+                        aria-label='All Toys'
+                        title='All Toys'
                         className={({ isActive }) => (isActive ? 'active' : 'default')}
                     >
-                        Shop
+                        All Toys
+                    </NavLink>
+                    <NavLink
+                        to='/myToys'
+                        aria-label='My Toys'
+                        title='My Toys'
+                        className={({ isActive }) => (isActive ? 'active' : 'default')}
+                    >
+                        My Toys
+                    </NavLink>
+                    <NavLink
+                        to='/addAToy'
+                        aria-label='Add A Toy'
+                        title='Add A Toy'
+                        className={({ isActive }) => (isActive ? 'active' : 'default')}
+                    >
+                        Add A Toy
+                    </NavLink>
+                    <NavLink
+                        to='/blogs'
+                        aria-label='Blogs'
+                        title='Blogs'
+                        className={({ isActive }) => (isActive ? 'active' : 'default')}
+                    >
+                        Blogs
                     </NavLink>
 
-                    <Link to='/cart' aria-label='Cart' title='Cart'>
-
-                    </Link>
+                   
 
                 </div>
                 {

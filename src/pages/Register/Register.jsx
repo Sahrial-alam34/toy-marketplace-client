@@ -5,8 +5,9 @@ import googleIcon from '../../assets/Animation/icons8-google.svg'
 import { Link } from "react-router-dom";
 import { AuthContext } from '../../providers/AuthProviders';
 import { useContext, useState } from "react";
+import { updateProfile } from 'firebase/auth';
 const Register = () => {
-    const { createUser } = useContext(AuthContext);
+    const { createUser,signInWithGoogle } = useContext(AuthContext);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
 
@@ -34,7 +35,7 @@ const Register = () => {
                 setError('');
 
                 setSuccess('User has been created successfully');
-                //updateUserData(result.user, name, photo)
+                updateUserData(result.user, name, photo)
                 form.reset();
 
 
@@ -45,6 +46,39 @@ const Register = () => {
                 setSuccess('');
             })
     }
+
+    const updateUserData = (user, name,photo) =>{
+        updateProfile(user,{
+            displayName: name,
+            photoURL: photo
+        })
+        .then(()=>{
+            console.log('user name and url updated')
+        })
+        .catch(error =>{
+            setError(error.message);
+        })
+    }
+
+
+    const handleGoogleSignIn = () =>{
+        signInWithGoogle()
+        .then(result=>{
+            const loggedUser = result.user;
+            console.log(loggedUser);
+        })
+        .catch(error=>{
+            console.error(error);
+        })
+    }
+
+ 
+    // const handleAccepted = event =>{
+    //     setAccepted(event.target.checked)
+
+    // }
+
+ 
     return (
         <div className='my-container w-full min-h-screen flex flex-col lg:flex-row items-start'>
             <div className='relative lg:w-1/2 h-full flex flex-col'>
@@ -122,7 +156,7 @@ const Register = () => {
                     <div className='w-full h-[1px] bg-black'></div>
                     <p className='text-lg text-black/80 absolute bg-[#f5f5f5]'>or</p>
                 </div>
-                <button className='w-full bg-white font-semibold my-2 text-[#060606] border-2 border-black rounded-md p-4 text-center flex items-center justify-center cursor-pointer'>
+                <button onClick={handleGoogleSignIn} className='w-full bg-white font-semibold my-2 text-[#060606] border-2 border-black rounded-md p-4 text-center flex items-center justify-center cursor-pointer'>
                     <img src={googleIcon} className='h-6 mr-2' alt="" />
                     Sign In With Google </button>
             </div>

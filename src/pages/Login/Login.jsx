@@ -7,7 +7,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 
 const Login = () => {
-    const { signIn } = useContext(AuthContext)
+    const { signIn,signInWithGoogle } = useContext(AuthContext)
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
 
@@ -36,6 +36,19 @@ const Login = () => {
 
 
     }
+
+    const handleGoogleSignIn = () =>{
+        signInWithGoogle()
+        .then(result=>{
+            const loggedUser = result.user;
+            console.log(loggedUser);
+        })
+        .catch(error=>{
+            console.error(error);
+        })
+    }
+
+   
     return (
         <div className='my-container w-full min-h-screen flex flex-col lg:flex-row items-start'>
             <div className='relative lg:w-1/2 h-full flex flex-col'>
@@ -99,7 +112,7 @@ const Login = () => {
                     <div className='w-full h-[1px] bg-black'></div>
                     <p className='text-lg text-black/80 absolute bg-[#f5f5f5]'>or</p>
                 </div>
-                <button className='w-full bg-white font-semibold my-2 text-[#060606] border-2 border-black rounded-md p-4 text-center flex items-center justify-center cursor-pointer'>
+                <button onClick={handleGoogleSignIn} className='w-full bg-white font-semibold my-2 text-[#060606] border-2 border-black rounded-md p-4 text-center flex items-center justify-center cursor-pointer'>
                     <img src={googleIcon} className='h-6 mr-2' alt="" />
                     Sign In With Google </button>
             </div>

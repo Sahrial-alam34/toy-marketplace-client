@@ -8,8 +8,9 @@ import { AuthContext } from '../../../providers/AuthProviders';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
+    console.log('user', user);
     const handleLogOut = () => {
-         logOut()
+        logOut()
         //console.log('clicked');
 
     }
@@ -59,27 +60,27 @@ const Header = () => {
 
                 </div>
                 {
-                    user ? <div>
+                    user ? <div className=' hidden space-x-8 lg:flex '>
 
-                        <NavLink
-                            to='/register'
-                            aria-label='Register'
-                            title='Register'
-                            className={({ isActive }) => (isActive ? 'active' : 'default')}
-                        >
-                            Photo
-                        </NavLink>
-                        <NavLink>
-                        <button
-                            onClick={handleLogOut}
-                            className={({ isActive }) => (isActive ? 'active' : 'default')}
-                        >
-                            LogOut
-                        </button>
+
+                        <div>
+                            <div>
+                                <img className='rounded-full' style={{ height: '40px', width: '40px' }} src={user.photoURL}
+                                    alt={user.displayName} />
+                             
+                            </div>
+                        </div>
+                        <NavLink className='mt-2'>
+                            <button
+                                onClick={handleLogOut}
+                                className={({ isActive }) => (isActive ? 'active' : 'default')}
+                            >
+                                LogOut
+                            </button>
                         </NavLink>
 
                     </div> :
-                        <div>
+                        <div className='hidden space-x-8 lg:flex gap-5'>
 
                             <NavLink
                                 to='/login'
@@ -159,49 +160,76 @@ const Header = () => {
                                         </button>
                                     </div>
                                 </div>
-                                <nav>
-                                    <ul className='space-y-4'>
-                                        <li>
-                                            <Link
-                                                to='/shop'
-                                                aria-label='Shop'
-                                                title='Shop'
-                                                className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
-                                            >
-                                                Shop
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link
-                                                to='/cart'
-                                                aria-label='Cart'
-                                                title='Cart'
-                                                className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
-                                            >
+                                <nav className='flex flex-col'>
+                                    <div className='items-center  space-x-8 '>
 
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link
-                                                to='/login'
-                                                aria-label='Login'
-                                                title='Login'
-                                                className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
-                                            >
-                                                login
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link
+                                        <NavLink
+                                            to='/'
+                                            aria-label='Home'
+                                            title='Home'
+                                            className={({ isActive }) => (isActive ? 'active' : 'default')}
+                                        >
+                                            Home
+                                        </NavLink>
+
+
+                                        <NavLink
+                                            to='/shop'
+                                            aria-label='Shop'
+                                            title='Shop'
+                                            className={({ isActive }) => (isActive ? 'active' : 'default')}
+                                        >
+                                            Shop
+                                        </NavLink>
+
+                                        <Link to='/cart' aria-label='Cart' title='Cart'>
+
+                                        </Link>
+
+                                    </div>
+                                    {
+                                        user ? <div className='flex gap-5'>
+
+                                            <NavLink
                                                 to='/register'
                                                 aria-label='Register'
                                                 title='Register'
-                                                className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                                                className={({ isActive }) => (isActive ? 'active' : 'default')}
                                             >
-                                                Register
-                                            </Link>
-                                        </li>
-                                    </ul>
+                                                Photo
+                                            </NavLink>
+                                            <NavLink>
+                                                <button
+                                                    onClick={handleLogOut}
+                                                    className={({ isActive }) => (isActive ? 'active' : 'default')}
+                                                >
+                                                    LogOut
+                                                </button>
+                                            </NavLink>
+
+                                        </div> :
+                                            <div className='flex gap-5'>
+
+                                                <NavLink
+                                                    to='/login'
+                                                    aria-label='Login'
+                                                    title='Login'
+                                                    className={({ isActive }) => (isActive ? 'active' : 'default')}
+                                                >
+                                                    Login
+                                                </NavLink>
+
+                                                <NavLink
+                                                    to='/register'
+                                                    aria-label='Register'
+                                                    title='Register'
+                                                    className={({ isActive }) => (isActive ? 'active' : 'default')}
+                                                >
+                                                    Register
+                                                </NavLink>
+
+                                            </div>
+                                    }
                                 </nav>
                             </div>
                         </div>

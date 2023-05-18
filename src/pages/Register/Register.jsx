@@ -14,7 +14,7 @@ const Register = () => {
                 </div> */}
                 {/* bg-[#f5f5f5] */}
             </div>
-            <div className='lg:w-1/2 h-full  bg-[#f5f5f5]  flex flex-col p-20 justify-between'>
+            <div className='lg:w-1/2 h-full  bg-green-100  flex flex-col p-20 justify-between'>
                 <div>
                     <h1 className='text-base text-[#060606] text-start font-semibold'>House Of Toy Cars </h1>
                 </div>

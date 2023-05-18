@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom'
 
-import logo from '../../../assets/logo/Troy-University-T-Car-Decal-Sticker-Mockup.jpg'
+import logo from '../../../assets/logo/toycars.jpg'
 
 
 const Header = () => {

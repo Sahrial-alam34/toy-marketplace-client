@@ -1,7 +1,7 @@
 
 
 const Toy = ({toy}) => {
-    console.log('category', toy)
+    //console.log('category', toy)
     const { image, Subcategory, displayName, toyName, price, quantity } = toy;
     return (
         <div >

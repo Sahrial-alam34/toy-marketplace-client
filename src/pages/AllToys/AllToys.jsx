@@ -4,14 +4,28 @@ import Toy from "../Toy/Toy";
 
 const AllToys = () => {
     const [toys, setToys] = useState([]);
+    const [search, setSearchText] = useState("");
     useEffect(() => {
         fetch("http://localhost:5000/allCars")
             .then(res => res.json())
             .then(data => {
-                console.log('data', data)
+                //console.log('data', data)
                 setToys(data)
             })
     }, [])
+
+    // useEffect(()=>{
+       
+    // },[])
+
+    const handleSearch = () =>{
+        fetch(`http://localhost:5000/getCarsByName/${search}`)
+        .then(res => res.json())
+        .then(data =>{
+            console.log('src data',data)
+            setToys(data)
+        })
+    }
 
 
     return (
@@ -22,8 +36,9 @@ const AllToys = () => {
                         type="text"
                         className="block w-full px-4 py-2 text-black bg-white border rounded-full focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                         placeholder="Search..."
+                        onChange={(event)=>setSearchText(event.target.value)}
                     />
-                    <button className="px-4 text-white bg-purple-600 rounded-full ">
+                    <button onClick={handleSearch} className="px-4 text-white bg-purple-600 rounded-full ">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="w-5 h-5"

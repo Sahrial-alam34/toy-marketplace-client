@@ -85,7 +85,7 @@ const AddAToy = () => {
                                 />
 
 
-                                <select className="text-input pl-5 h-10 text-black rounded-lg border-2 border-indigo-400 mb-2 mr-2" {...register("Sub-category")}>
+                                <select className="text-input pl-5 h-10 text-black rounded-lg border-2 border-indigo-400 mb-2 mr-2" {...register("Subcategory")}>
                                     <option value="Track">Track</option>
                                     <option value="Bus">Bus</option>
                                     <option value="Dinky">Dinky</option>

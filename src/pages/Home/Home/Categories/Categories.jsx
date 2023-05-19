@@ -1,36 +1,72 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import CarDetails from '../CarDetails/CarDetails';
 
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+// import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
-const categoriesList = [
-    {
-        name: 'Category 1',
-        subCategories: [['c','e'], 'Subcategory 1-2', 'Subcategory 1-3'],
-    },
-    {
-        name: 'Category 2',
-        subCategories: ['Subcategory 2-1', 'Subcategory 2-2', 'Subcategory 2-3'],
-    },
-    {
-        name: 'Category 3',
-        subCategories: ['Subcategory 3-1', 'Subcategory 3-2', 'Subcategory 3-3'],
-    },
-];
 
 
 
 
 const Categories = () => {
-    const [selectedTabIndex, setSelectedTabIndex] = useState(0);
+    // const [selectedTabIndex, setSelectedTabIndex] = useState(0);
 
-    const handleTabSelect = (index) => {
-        setSelectedTabIndex(index);
-    }
+    // const handleTabSelect = (index) => {
+    //     setSelectedTabIndex(index);
+    // }
+
+    const handleTabClick = (tabName) => {
+        setActiveTab(tabName);
+    };
+
+    const [toys, setToys] = useState([]);
+    const [activeTab, setActiveTab] = useState("remote");
+    useEffect(() => {
+        fetch("http://localhost:5000/allCars")
+            .then(res => res.json())
+            .then(data => {
+                setToys(data)
+            })
+    },[])
     return (
-         <div className='mt-10'>
-              <h1 className="text-center font-semibold text-5xl mb-5">Top Category</h1>
+        <div className='mt-10'>
+            <h1 className="text-center font-semibold text-5xl mb-5">Top Category</h1>
             <div className="lg:max-w-7xl mx-auto px-4 py-8">
-                <Tabs
+                    
+                        <div className="text-center w-100 m-auto">
+                            <div className="tabs d-flex justify-content-center align-items-center">
+                                <div
+                                    onClick={() => handleTabClick("remote")}
+                                    className={`btn  btn-primary remote ${activeTab == "remote" ? " bg-danger text-white" : ""
+                                        }`}
+                                >
+                                    Remote
+                                </div>
+                                <button
+                                    onClick={() => handleTabClick("offline")}
+                                    className={`btn  btn-secondary Offline ${activeTab == "offline" ? " bg-danger text-white" : ""
+                                        }`}
+                                >
+                                    Offline
+                                </button>
+                            </div>
+                        </div>
+                    
+                    <div className="grid lg:grid-cols-2 mt-5 ">
+                    
+                        {toys?.map((toy) => (
+                            <CarDetails
+                            key={toy._id}
+                             toy={toy}>
+                               
+                             </CarDetails>
+                        ))}
+                    </div>
+                
+
+               
+        
+                
+                        {/* <Tabs
                     selectedIndex={selectedTabIndex}
                     onSelect={handleTabSelect}
                     className="bg-gradient-to-br from-gray-400 to-indigo-200 rounded-lg"
@@ -72,7 +108,7 @@ const Categories = () => {
                             </div>
                         </TabPanel>
                     ))}
-                </Tabs>
+                </Tabs> */}
             </div>
         </div>
     );

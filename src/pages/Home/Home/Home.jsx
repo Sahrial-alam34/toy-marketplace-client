@@ -1,5 +1,6 @@
 import Banner from "./Banner/Banner";
 import Categories from "./Categories/Categories";
+import Facility from "./Facility/Facility";
 import Gallery from "./Gallery/Gallery";
 
 
@@ -12,6 +13,7 @@ const Home = () => {
                
             </Gallery>
             <Categories></Categories>
+            <Facility></Facility>
         </div>
     );
 };

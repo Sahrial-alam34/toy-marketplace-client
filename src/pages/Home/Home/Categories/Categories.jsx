@@ -28,7 +28,7 @@ const Categories = () => {
     }
     return (
          <div className='mt-10'>
-              <h1 className="text-center font-semibold text-5xl mb-5">Category</h1>
+              <h1 className="text-center font-semibold text-5xl mb-5">Top Category</h1>
             <div className="lg:max-w-7xl mx-auto px-4 py-8">
                 <Tabs
                     selectedIndex={selectedTabIndex}

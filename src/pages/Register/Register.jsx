@@ -1,13 +1,14 @@
 
 import Lottie from "lottie-react";
 import login from '../../assets/Animation/login.json'
-import googleIcon from '../../assets/Animation/icons8-google.svg'
+// import googleIcon from '../../assets/Animation/icons8-google.svg'
 import { Link } from "react-router-dom";
 import { AuthContext } from '../../providers/AuthProviders';
 import { useContext, useState } from "react";
 import { updateProfile } from 'firebase/auth';
+import GoogleLogin from "../GoogleLogin/GoogleLogin";
 const Register = () => {
-    const { createUser,signInWithGoogle } = useContext(AuthContext);
+    const { createUser} = useContext(AuthContext);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
 
@@ -61,16 +62,16 @@ const Register = () => {
     }
 
 
-    const handleGoogleSignIn = () =>{
-        signInWithGoogle()
-        .then(result=>{
-            const loggedUser = result.user;
-            console.log(loggedUser);
-        })
-        .catch(error=>{
-            console.error(error);
-        })
-    }
+    // const handleGoogleSignIn = () =>{
+    //     signInWithGoogle()
+    //     .then(result=>{
+    //         const loggedUser = result.user;
+    //         console.log(loggedUser);
+    //     })
+    //     .catch(error=>{
+    //         console.error(error);
+    //     })
+    // }
 
  
     // const handleAccepted = event =>{
@@ -156,9 +157,10 @@ const Register = () => {
                     <div className='w-full h-[1px] bg-black'></div>
                     <p className='text-lg text-black/80 absolute bg-[#f5f5f5]'>or</p>
                 </div>
-                <button onClick={handleGoogleSignIn} className='w-full bg-white font-semibold my-2 text-[#060606] border-2 border-black rounded-md p-4 text-center flex items-center justify-center cursor-pointer'>
+                {/* <button onClick={handleGoogleSignIn} className='w-full bg-white font-semibold my-2 text-[#060606] border-2 border-black rounded-md p-4 text-center flex items-center justify-center cursor-pointer'>
                     <img src={googleIcon} className='h-6 mr-2' alt="" />
-                    Sign In With Google </button>
+                    Sign In With Google </button> */}
+                    <GoogleLogin></GoogleLogin>
             </div>
 
 

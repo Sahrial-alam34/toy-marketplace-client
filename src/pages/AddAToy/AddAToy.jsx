@@ -1,21 +1,52 @@
 
 import { useForm } from "react-hook-form";
 import Lottie from "lottie-react";
+import Swal from "sweetalert2";
 import addProduct from '../../assets/Animation/addProduct.json'
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 const AddAToy = () => {
     const { user } = useContext(AuthContext);
     const {
         register,
         handleSubmit,
-        watch,
         formState: { errors },
+        setValue
     } = useForm();
+
+    // automatically sent data
+    useEffect(() => {
+        setValue('displayName', user?.displayName); // Set initial value when "user.displayName" changes
+      }, [setValue, user?.displayName]);
+    useEffect(() => {
+        setValue('postedBy', user?.email); // Set initial value when "user.email" changes
+      }, [setValue, user?.email]);
+
+
     const onSubmit = (data) => {
-        //data.skills = selectedOption;
-        console.log(data);
+       fetch("http://localhost:5000/addCar", {
+        method:"POST",
+        headers:{
+            'Content-type':'application/json'
+        },
+        body:JSON.stringify(data)
+       })
+       .then(res => res.json())
+       .then((data => {
+        console.log(data)
+        if(data.insertedId){
+            Swal.fire({
+                title: 'Success!',
+                text: 'Car added Successfully',
+                icon: 'success',
+                confirmButtonText: 'Cool'
+              })
+        }
+       }))
+        //console.log(data);
     }
+
+
     return (
         <div className="">
             <h1 className="text-center font-semibold text-5xl mb-5">Add A New TOY!!</h1>

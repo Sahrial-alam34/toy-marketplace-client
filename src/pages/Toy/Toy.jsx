@@ -10,9 +10,10 @@ const Toy = ({toy}) => {
             <figure><img className="h-96" src={image} alt="Album" /></figure>
             <div className="card-body">
                 <h2 className="card-title">Toy Name: {toyName}</h2>
-                <div className="grid grid-cols-2">
-                    <p>Sub Category: {Subcategory}</p>
+                <p>Sub Category: {Subcategory}</p>
                     <p>Seller Name: {displayName}</p>
+                <div className="grid grid-cols-2">
+                    
                     <p>Price: {price}</p>
                     <p>Quantity: {quantity}</p>
                     <p>Price: {price}</p>

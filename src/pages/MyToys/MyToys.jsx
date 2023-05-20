@@ -1,13 +1,15 @@
-/* eslint-disable no-unused-vars */
 
+import React from "react";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
+import UpdateCarModal from "../UpdateCarModal/UpdateCarModal";
 
 
 
 const MyToys = () => {
     const { user } = useContext(AuthContext)
     const [cars, setCars] = useState([])
+    const [showModal, setShowModal] = React.useState(false);
     useEffect(() => {
         fetch(`http://localhost:5000/myCars/${user?.email}`)
             .then(res => res.json())
@@ -36,6 +38,12 @@ const MyToys = () => {
                                         className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
                                     >
                                         Car Name
+                                    </th>
+                                    <th
+                                        scope="col"
+                                        className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
+                                    >
+                                        Image
                                     </th>
                                     <th
                                         scope="col"
@@ -77,14 +85,23 @@ const MyToys = () => {
                             </thead>
 
                             {
-                                cars.map((car,index) => (
-                                    
+                                cars.map((car, index) => (
+
                                     <tr key={car._id}>
                                         <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
                                             {index + 1}
                                         </td>
                                         <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
                                             {car.toyName}
+                                        </td>
+                                        <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
+                                            <div className="avatar">
+                                                <div className="rounded w-24 h-24">
+                                                    {
+                                                        car.image && <img src={car.image} alt="hello" />
+                                                    }
+                                                </div>
+                                            </div>
                                         </td>
                                         <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
                                             {car.Subcategory}
@@ -99,12 +116,23 @@ const MyToys = () => {
                                             {car.description}
                                         </td>
                                         <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                                            <a
+                                            {/* <a
                                                 className="text-green-500 hover:text-green-700"
                                                 href="#"
                                             >
                                                 Edit
-                                            </a>
+                                            </a> */}
+                                            <button
+                                                className="text-green-500 hover:text-green-700"
+                                                type="button"
+                                                onClick={() => setShowModal(true)}
+                                            >
+                                                Edit
+                                            </button>
+                                            <UpdateCarModal
+                                                show={showModal}
+                                                onHide={() => setShowModal(false)}
+                                            ></UpdateCarModal>
                                         </td>
                                         <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                             <a
@@ -118,7 +146,7 @@ const MyToys = () => {
                                 ))
                             }
 
-                          
+
                         </table>
                     </div>
                 </div>

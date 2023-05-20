@@ -14,6 +14,8 @@ import AllToys from './pages/AllToys/AllToys';
 import Blogs from './pages/Blogs/Blogs';
 import AddAToy from './pages/AddAToy/AddAToy';
 import MyToys from './pages/MyToys/MyToys';
+import PrivateRoute from './routes/PrivateRoute';
+import SingleCarDetails from './pages/SingleCarDetails/SingleCarDetails';
 
 const router = createBrowserRouter([
   {
@@ -37,6 +39,11 @@ const router = createBrowserRouter([
         element:<AllToys></AllToys>
       },
       {
+        path:'/allCars/:id',
+        element:<PrivateRoute><SingleCarDetails></SingleCarDetails></PrivateRoute>,
+        // loader:({params}) => fetch(`https://assignment10-chef-recipe-hunter-react-firebase-s-sahrial-alam34.vercel.app/chef/${params.id}`)
+      },
+      {
         path: '/blogs',
         element: <Blogs></Blogs>
       },
@@ -46,8 +53,11 @@ const router = createBrowserRouter([
       },
       {
         path:'/myToys',
-        element: <MyToys></MyToys>
-      }
+        element: <PrivateRoute>
+          <MyToys></MyToys>
+        </PrivateRoute>
+      },
+
     ]
   },
 ]);

@@ -16,6 +16,7 @@ import AddAToy from './pages/AddAToy/AddAToy';
 import MyToys from './pages/MyToys/MyToys';
 import PrivateRoute from './routes/PrivateRoute';
 import SingleCarDetails from './pages/SingleCarDetails/SingleCarDetails';
+import CarEdit from './pages/CarEdit/CarEdit';
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,11 @@ const router = createBrowserRouter([
           <MyToys></MyToys>
         </PrivateRoute>
       },
+      {
+        path:'/updatedCar/:id',
+        element:<CarEdit></CarEdit>,
+        loader: ({params})=>fetch(`http://localhost:5000/updatedCars/${params.id}`)
+      }
 
     ]
   },

@@ -53,22 +53,28 @@ const Header = () => {
                     >
                         All Toys
                     </NavLink>
-                    <NavLink
-                        to='/myToys'
-                        aria-label='My Toys'
-                        title='My Toys'
-                        className={({ isActive }) => (isActive ? 'active' : 'default')}
-                    >
-                        My Toys
-                    </NavLink>
-                    <NavLink
-                        to='/addAToy'
-                        aria-label='Add A Toy'
-                        title='Add A Toy'
-                        className={({ isActive }) => (isActive ? 'active' : 'default')}
-                    >
-                        Add A Toy
-                    </NavLink>
+                    {
+                        user &&
+                        <NavLink
+                            to='/myToys'
+                            aria-label='My Toys'
+                            title='My Toys'
+                            className={({ isActive }) => (isActive ? 'active' : 'default')}
+                        >
+                            My Toys
+                        </NavLink>
+                    }
+                    {
+                        user &&
+                        <NavLink
+                            to='/addAToy'
+                            aria-label='Add A Toy'
+                            title='Add A Toy'
+                            className={({ isActive }) => (isActive ? 'active' : 'default')}
+                        >
+                            Add A Toy
+                        </NavLink>
+                    }
                     <NavLink
                         to='/blogs'
                         aria-label='Blogs'
@@ -121,7 +127,7 @@ const Header = () => {
                                     {user.displayName}
                                 </div>
                             </div> */}
-                            
+
                         </div>
                         <NavLink className='mt-2'>
                             <button

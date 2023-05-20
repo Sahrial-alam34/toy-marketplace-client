@@ -20,7 +20,7 @@ const Toy = ({toy}) => {
                     <p>Price: {price}</p>
                 </div>
 
-                <Link to={`/allCars/${_id}`} className="card-actions justify-end">
+                <Link to={`/carDetails/${_id}`} className="card-actions justify-end">
                     <button className="btn btn-primary">Listen</button>
                 </Link>
             </div>

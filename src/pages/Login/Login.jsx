@@ -2,7 +2,7 @@
 import Lottie from "lottie-react";
 import login from '../../assets/Animation/login.json'
 // import googleIcon from '../../assets/Animation/icons8-google.svg'
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 import GoogleLogin from "../GoogleLogin/GoogleLogin";
@@ -11,6 +11,10 @@ const Login = () => {
     const { signIn } = useContext(AuthContext)
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
+    const location = useLocation();
+    const navigate = useNavigate();
+    console.log('login location', location.state.from)
+    const from = location.state?.from?.pathname || '/'
 
     const handleLogin = (event) => {
         event.preventDefault();
@@ -25,7 +29,7 @@ const Login = () => {
                 console.log(loggedUser);
                 setError('')
                 setSuccess('Login in Successfully')
-                // navigate(from, {replace: true})
+                navigate(from, {replace: true})
                 form.reset();
             })
             .catch(error => {
@@ -38,31 +42,8 @@ const Login = () => {
 
     }
 
-    // const updateUserData = (user, name,photo) =>{
-    //     updateProfile(user,{
-    //         displayName: name,
-    //         photoURL: photo
-    //     })
-    //     .then(()=>{
-    //         console.log('user name and url updated')
-    //     })
-    //     .catch(error =>{
-    //         setError(error.message);
-    //     })
-    // }
 
-    // const handleGoogleSignIn = () =>{
-    //     signInWithGoogle()
-    //     .then(result=>{
-    //         const loggedUser = result.user;
-    //         console.log(loggedUser);
-    //     })
-    //     .catch(error=>{
-    //         console.error(error);
-    //     })
-    // }
 
-   
     return (
         <div className='my-container w-full min-h-screen flex flex-col lg:flex-row items-start'>
             <div className='relative lg:w-1/2 h-full flex flex-col'>
@@ -130,7 +111,7 @@ const Login = () => {
                     <img src={googleIcon} className='h-6 mr-2' alt="" />
                     
                     Sign In With Google </button> */}
-                    <GoogleLogin></GoogleLogin>
+                <GoogleLogin></GoogleLogin>
             </div>
 
 

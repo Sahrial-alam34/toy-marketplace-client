@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 
 
 const CarDetails = ({ toy }) => {
 
-    console.log('category', toy)
-    const { image, Subcategory, displayName, toyName, price, quantity } = toy;
+    //console.log('category', toy)
+    const {_id, image, Subcategory, displayName, toyName, price, quantity } = toy;
 
     return (
         <div>
@@ -20,9 +21,9 @@ const CarDetails = ({ toy }) => {
                         <p>Price: {price}</p>
                     </div>
 
-                    <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Listen</button>
-                    </div>
+                    <Link to={`/carDetails/${_id}`} className="card-actions justify-end">
+                    <button className="btn btn-primary">Listen</button>
+                </Link>
                 </div>
             </div>
         </div>

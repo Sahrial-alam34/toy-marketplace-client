@@ -40,9 +40,9 @@ const router = createBrowserRouter([
         element:<AllToys></AllToys>
       },
       {
-        path:'/allCars/:id',
+        path:'/carDetails/:id',
         element:<PrivateRoute><SingleCarDetails></SingleCarDetails></PrivateRoute>,
-        // loader:({params}) => fetch(`https://assignment10-chef-recipe-hunter-react-firebase-s-sahrial-alam34.vercel.app/chef/${params.id}`)
+        loader:({params}) => fetch(`http://localhost:5000/carDetails/${params.id}`)
       },
       {
         path: '/blogs',
@@ -54,15 +54,16 @@ const router = createBrowserRouter([
       },
       {
         path:'/myToys',
-        element: <PrivateRoute>
+        element: 
           <MyToys></MyToys>
-        </PrivateRoute>
+        
       },
       {
         path:'/updatedCar/:id',
         element:<CarEdit></CarEdit>,
         loader: ({params})=>fetch(`http://localhost:5000/updatedCars/${params.id}`)
-      }
+      },
+  
 
     ]
   },

@@ -2,14 +2,20 @@
 import { useContext } from 'react';
 import googleIcon from '../../assets/Animation/icons8-google.svg'
 import { AuthContext } from '../../providers/AuthProviders';
+import { useLocation, useNavigate } from 'react-router-dom';
 const GoogleLogin = () => {
     const { signInWithGoogle } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+    //console.log('login location 16', location.state.from)
+     const from = location.state?.from?.pathname || '/'
 
     const handleGoogleSignIn = () => {
         signInWithGoogle()
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
+                navigate(from, {replace: true})
             })
             .catch(error => {
                 console.error(error);

@@ -11,10 +11,10 @@ const Login = () => {
     const { signIn } = useContext(AuthContext)
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
-    const location = useLocation();
-    const navigate = useNavigate();
-    console.log('login location', location.state.from)
-    const from = location.state?.from?.pathname || '/'
+     const location = useLocation();
+     const navigate = useNavigate();
+     //console.log('login location 16', location.state.from)
+      const from = location.state?.from?.pathname || '/'
 
     const handleLogin = (event) => {
         event.preventDefault();
@@ -30,6 +30,7 @@ const Login = () => {
                 setError('')
                 setSuccess('Login in Successfully')
                 navigate(from, {replace: true})
+               //navigate('/');
                 form.reset();
             })
             .catch(error => {

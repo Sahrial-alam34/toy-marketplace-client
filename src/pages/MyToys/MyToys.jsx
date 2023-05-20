@@ -1,15 +1,16 @@
 
-import React from "react";
+
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
-import UpdateCarModal from "../UpdateCarModal/UpdateCarModal";
+import Swal from "sweetalert2";
+
 
 
 
 const MyToys = () => {
     const { user } = useContext(AuthContext)
     const [cars, setCars] = useState([])
-    const [showModal, setShowModal] = React.useState(false);
+
     useEffect(() => {
         fetch(`http://localhost:5000/myCars/${user?.email}`)
             .then(res => res.json())
@@ -19,6 +20,101 @@ const MyToys = () => {
             })
 
     }, [user])
+
+
+    const handleDelete = _id => {
+        console.log(_id);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                //console.log('confirm')
+
+                fetch(`http://localhost:5000/myCars/${_id}`, {
+                    method: 'DELETE',
+
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your Coffee has been deleted.',
+                                'success'
+                            )
+
+                            // const remaining = coffees.filter(cof => cof._id !== _id)
+                            // setCoffees(remaining);
+
+                        }
+                    })
+            }
+        })
+    }
+
+    // const handleDelete = id => {
+    //     //console.log('clicked',id)
+    //     Swal.fire({
+    //         title: 'Are you sure?',
+    //         text: "You won't be able to revert this!",
+    //         icon: 'warning',
+    //         showCancelButton: true,
+    //         confirmButtonColor: '#3085d6',
+    //         cancelButtonColor: '#d33',
+    //         confirmButtonText: 'Yes, delete it!'
+    //     }).then((result) => {
+    //         if (result.isConfirmed) {
+    //             fetch(`http://localhost:5000/addCar/${id}`, {
+    //                 method: 'DELETE'
+    //             })
+    //                 .then(res => res.json())
+    //                 .then(data => {
+    //                     console.log(data);
+    //                     if (data.deletedCount > 0) {
+    //                         Swal.fire(
+    //                             'Deleted!',
+    //                             'Your file has been deleted.',
+    //                             'success'
+    //                         )
+    //                         // const remaining = bookings.filter(booking => booking._id !== id)
+    //                         // setBookings(remaining)
+    //                     }
+    //                 })
+
+    //         }
+    //     })
+
+
+    // }
+
+    // const handleBookingConfirm = id =>{
+       
+    //     fetch(`http://localhost:5000/bookings/${id}`,{
+    //         method:'PATCH',
+    //         headers:{ 'content-type':'application/json'},
+    //         body: JSON.stringify({status:'confirm'})
+    //     })
+    //     .then(res=> res.json())
+    //     .then(data => {
+    //         console.log(data);
+    //         if(data.modifiedCount > 0){
+    //             // update status
+    //             // const remaining = bookings.filter(booking => booking._id !== id);
+    //             // const updated = bookings.find(booking => booking._id === id);
+    //             // updated.status = 'confirm'
+    //             // const newBookings = [updated, ...remaining];
+    //             // setBookings(newBookings);
+    //         }
+    //     })
+    // }
+
     return (
         <div className="my-container flex flex-col">
             <div className="overflow-x-auto">
@@ -116,28 +212,20 @@ const MyToys = () => {
                                             {car.description}
                                         </td>
                                         <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                                            {/* <a
+                                            <a
                                                 className="text-green-500 hover:text-green-700"
                                                 href="#"
+                                                // onClick={()=>handleBookingConfirm(car._id)}
                                             >
                                                 Edit
-                                            </a> */}
-                                            <button
-                                                className="text-green-500 hover:text-green-700"
-                                                type="button"
-                                                onClick={() => setShowModal(true)}
-                                            >
-                                                Edit
-                                            </button>
-                                            <UpdateCarModal
-                                                show={showModal}
-                                                onHide={() => setShowModal(false)}
-                                            ></UpdateCarModal>
+                                            </a>
+
                                         </td>
                                         <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                             <a
                                                 className="text-red-500 hover:text-red-700"
                                                 href="#"
+                                                onClick={()=>handleDelete(car._id)}
                                             >
                                                 Delete
                                             </a>

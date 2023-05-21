@@ -31,7 +31,7 @@ const MyToys = () => {
         fetch(`http://localhost:5000/sorted/${activeTab}`)
             .then(res => res.json())
             .then(data => {
-                const result = data.filter((car)=> car?.postedBy === user?.email)
+                const result = data.filter((car) => car?.postedBy === user?.email)
                 setCars(result)
             })
     }, [activeTab])
@@ -46,7 +46,7 @@ const MyToys = () => {
 
     }, [user])
 
-    
+
 
 
     const handleDelete = _id => {
@@ -89,7 +89,10 @@ const MyToys = () => {
 
     return (
         <div className="my-container flex flex-col">
-            <h2 className="text-center text-3xl font-extrabold mb-5">Sorted By Price</h2>
+            <div className="flex">
+                <h2 className="text-center text-3xl font-extrabold mb-5 lg:mr-64"> Total Car Added {cars.length}</h2>
+                <h2 className="text-center text-3xl font-extrabold mb-5">Sorted By Price</h2>
+            </div>
             <div className="text-center w-100 m-auto">
                 <div className="flex justify-evenly items-center">
                     <div className='bg-gray-500'>
@@ -107,7 +110,7 @@ const MyToys = () => {
                         >
                             Descending
                         </div>
-                    
+
                     </div>
 
                 </div>

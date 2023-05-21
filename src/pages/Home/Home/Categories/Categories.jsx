@@ -17,7 +17,7 @@ const Categories = () => {
     };
 
     const [toys, setToys] = useState([]);
-    const [activeTab, setActiveTab] = useState("");
+    const [activeTab, setActiveTab] = useState("car");
     useEffect(() => {
         fetch(`http://localhost:5000/allCars/${activeTab}`)
             .then(res => res.json())

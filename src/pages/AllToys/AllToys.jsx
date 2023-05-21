@@ -32,7 +32,12 @@ const AllToys = () => {
 
     return (
         <div className="my-container ">
+               {
+                    <h2 className="text-3xl text-center font-extrabold mb-20">Total Cars: {toys.length}</h2>
+                    
+                }
             <div className="flex items-center justify-around">
+             
                 <div className="flex space-x-1 mb-5">
                     <input
                         type="text"

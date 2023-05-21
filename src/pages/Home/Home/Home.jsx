@@ -1,3 +1,4 @@
+import useTitle from "../../../hooks/useTitle";
 import Banner from "./Banner/Banner";
 import Categories from "./Categories/Categories";
 import Facility from "./Facility/Facility";
@@ -7,6 +8,7 @@ import Partner from "./Partner/Partner";
 
 
 const Home = () => {
+    useTitle('Home')
     return (
         <div className="my-container">
             <Banner></Banner>

@@ -5,8 +5,10 @@ import Swal from "sweetalert2";
 import addProduct from '../../assets/Animation/addProduct.json'
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
+import useTitle from "../../hooks/useTitle";
 const AddAToy = () => {
     const { user } = useContext(AuthContext);
+    useTitle('Add A Toy')
     const {
         register,
         handleSubmit,

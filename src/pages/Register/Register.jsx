@@ -7,10 +7,12 @@ import { AuthContext } from '../../providers/AuthProviders';
 import { useContext, useState } from "react";
 import { updateProfile } from 'firebase/auth';
 import GoogleLogin from "../GoogleLogin/GoogleLogin";
+import useTitle from "../../hooks/useTitle";
 const Register = () => {
     const { createUser} = useContext(AuthContext);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
+    useTitle('Register')
 
     const handleRegister = (event) => {
         event.preventDefault();

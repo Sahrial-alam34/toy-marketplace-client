@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import useTitle from "../../hooks/useTitle";
 
 
 
@@ -12,6 +13,7 @@ const MyToys = () => {
     const { user } = useContext(AuthContext)
     const [cars, setCars] = useState([])
     const [activeTab, setActiveTab] = useState("");
+    useTitle('My Toys')
 
     const handleTabClick = (tabName) => {
 

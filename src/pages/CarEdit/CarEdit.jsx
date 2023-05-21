@@ -1,9 +1,11 @@
 
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import useTitle from "../../hooks/useTitle";
 
 
 const CarEdit = () => {
+    useTitle('Edit A Car')
     const handleUpdateCar= event =>{
         event.preventDefault();
         const form = event.target;

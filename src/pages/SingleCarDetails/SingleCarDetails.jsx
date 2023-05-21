@@ -4,9 +4,11 @@ import { Link, useLoaderData } from "react-router-dom";
 import { toast } from 'react-hot-toast';
 import Rating from "react-rating";
 import { FaRegStar, FaStar } from "react-icons/fa";
+import useTitle from "../../hooks/useTitle";
 
 const SingleCarDetails = () => {
     //  const { id } = useParams()
+    useTitle('A Single Car')
     const car = useLoaderData();
 
 

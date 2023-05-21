@@ -1,11 +1,13 @@
+import { useContext } from "react";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import Rating from "react-rating";
 import { Link, Navigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../../../providers/AuthProviders";
 
 
 const CarDetails = ({ toy }) => {
-
+    const {user} = useContext(AuthContext)
     //console.log('category', toy)
     const { _id, image, Subcategory, displayName, toyName, price, quantity, rating } = toy;
    
@@ -74,10 +76,16 @@ const CarDetails = ({ toy }) => {
                         ></Rating>
                         <span className="ml-2">{rating}</span>
                     </div>
+                    {
+                       user ? 
+                        <Link to={`/carDetails/${_id}`}  className="text-center bg-green-400 text-green-700 py-2 rounded-lg font-semibold mt-4 hover:bg-green-300 focus:scale-95 transition-all duration-200 ease-out">
+                        <button >View Details</button>
+                    </Link>
+                    :
                     <Link to={`/carDetails/${_id}`} onClick={handleAlert} className="text-center bg-green-400 text-green-700 py-2 rounded-lg font-semibold mt-4 hover:bg-green-300 focus:scale-95 transition-all duration-200 ease-out">
                         <button >View Details</button>
                     </Link>
-
+                        }
                 </div>
             </div>
 

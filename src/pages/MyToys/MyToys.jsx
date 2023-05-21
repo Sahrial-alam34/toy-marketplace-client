@@ -11,6 +11,20 @@ import { Link } from "react-router-dom";
 const MyToys = () => {
     const { user } = useContext(AuthContext)
     const [cars, setCars] = useState([])
+    const [activeTab, setActiveTab] = useState("");
+
+    const handleTabClick = (tabName) => {
+
+        setActiveTab(tabName);
+    };
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/sorted/${activeTab}`)
+            .then(res => res.json())
+            .then(data => {
+                setCars(data)
+            })
+    }, [activeTab])
 
     useEffect(() => {
         fetch(`http://localhost:5000/myCars/${user?.email}`)
@@ -63,6 +77,28 @@ const MyToys = () => {
 
     return (
         <div className="my-container flex flex-col">
+            <div className="text-center w-100 m-auto">
+                <div className="flex justify-evenly items-center">
+                    <div className='bg-gray-500'>
+                        <div
+                            onClick={() => handleTabClick("ascending")}
+                            className={`tab  tab2 text-white car ${activeTab == "ascending" ? " bg-primary text-white" : ""
+                                }`}
+                        >
+                            Ascending
+                        </div>
+                        <div
+                            onClick={() => handleTabClick("descending")}
+                            className={`tab  tab2 text-white bus ${activeTab == "descending" ? " bg-primary text-white" : ""
+                                }`}
+                        >
+                            Descending
+                        </div>
+                    
+                    </div>
+
+                </div>
+            </div>
             <div className="overflow-x-auto">
                 <div className="p-1.5 w-full inline-block align-middle">
                     <div className="overflow-hidden border rounded-lg">
@@ -160,8 +196,8 @@ const MyToys = () => {
                                         <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                             <Link to={`/updatedCar/${car._id}`}
                                                 className="text-green-500 hover:text-green-700"
-                                               
-                                                
+
+
                                             >
                                                 Edit
                                             </Link>
@@ -171,7 +207,7 @@ const MyToys = () => {
                                             <a
                                                 className="text-red-500 hover:text-red-700"
                                                 href="#"
-                                                onClick={()=>handleDelete(car._id)}
+                                                onClick={() => handleDelete(car._id)}
                                             >
                                                 Delete
                                             </a>

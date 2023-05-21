@@ -2,6 +2,8 @@
 import { Link, useLoaderData } from "react-router-dom";
 
 import { toast } from 'react-hot-toast';
+import Rating from "react-rating";
+import { FaRegStar, FaStar } from "react-icons/fa";
 
 const SingleCarDetails = () => {
     //  const { id } = useParams()
@@ -10,7 +12,7 @@ const SingleCarDetails = () => {
 
 
     // const [carInfo, setCarInfo] = useState({})
-    const { image, Subcategory, displayName, toyName, price, quantity, postedBy,description } = car;
+    const { image, Subcategory, displayName, toyName, price, quantity, postedBy,description,rating } = car;
 
 
     const handleBuy = () => {
@@ -36,8 +38,19 @@ const SingleCarDetails = () => {
 
                             <p>Price: {price}</p>
                             <p>Quantity: {quantity}</p>
-                            <p>Price: {price}</p>
+                            
                         </div>
+                        <div >
+                            <Rating
+                            placeholderRating={rating}
+                            readonly
+                            emptySymbol={<FaRegStar></FaRegStar>}
+                            placeholderSymbol={<FaStar className="text-yellow-400"></FaStar>}
+                            fullSymbol={<FaStar></FaStar>}
+                            ></Rating>
+                            <span className="ml-2">{rating}</span>
+                        </div>
+
                         <p>Details: {description}</p>
 
                         <div className="flex justify-between">

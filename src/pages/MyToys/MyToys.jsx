@@ -40,7 +40,7 @@ const MyToys = () => {
         fetch(`http://localhost:5000/myallCars/${user?.email}`)
             .then(res => res.json())
             .then(data => {
-                console.log('mycar', data)
+                //console.log('mycar', data)
                 setCars(data)
             })
 

@@ -6,6 +6,7 @@ import useTitle from "../../hooks/useTitle";
 const AllToys = () => {
     const [toys, setToys] = useState([]);
     const [search, setSearchText] = useState("");
+   // const [allData, setAllData] = useState(false)
     useTitle('All Toys')
     useEffect(() => {
         fetch("http://localhost:5000/allCars")
@@ -29,15 +30,31 @@ const AllToys = () => {
             })
     }
 
+    //     useEffect(() => {
+    //         fetch("http://localhost:5000/allTotalCars")
+    //             .then(res => res.json())
+    //             .then(data => {
+    //                 //console.log('data', data)
+    //                 setToys(data)
+    //             })
+    //     }, [allData])
+    // const handleAllData = (allData) =>{
+        
+    //     setAllData(allData);
+       
+
+    
+    // }
+
 
     return (
         <div className="my-container ">
-               {
-                    <h2 className="text-3xl text-center font-extrabold mb-20">Total Cars: {toys.length}</h2>
-                    
-                }
+            {
+                <h2 className="text-3xl text-center font-extrabold mb-20">Total Cars: {toys.length}</h2>
+
+            }
             <div className="flex items-center justify-around">
-             
+
                 <div className="flex space-x-1 mb-5">
                     <input
                         type="text"
@@ -75,12 +92,16 @@ const AllToys = () => {
                 </div>
 
             </div>
-{/* 
+            {/* 
             <div className="grid lg:grid-cols-2 mt-5">
 
 
 
             </div> */}
+            {/* <div className="text-center">
+                <button onClick={()=>handleAllData(!allData)} className="text-center py bg-green-400 text-green-700 p-3 rounded-lg font-semibold mt-4 hover:bg-green-300 focus:scale-95 transition-all duration-200 ease-out">See More</button>
+            </div> */}
+
         </div>
     );
 };

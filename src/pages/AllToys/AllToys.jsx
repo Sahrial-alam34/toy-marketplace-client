@@ -33,7 +33,7 @@ const AllToys = () => {
     return (
         <div className="my-container ">
             <div className="flex items-center justify-around">
-                <div className="flex space-x-1">
+                <div className="flex space-x-1 mb-5">
                     <input
                         type="text"
                         className="block w-full px-4 py-2 text-black bg-white border rounded-full focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"

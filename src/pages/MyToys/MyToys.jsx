@@ -20,16 +20,24 @@ const MyToys = () => {
         setActiveTab(tabName);
     };
 
+    // useEffect(() => {
+    //     fetch(`http://localhost:5000/sorted/${activeTab}`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setCars(data)
+    //         })
+    // }, [activeTab])
     useEffect(() => {
         fetch(`http://localhost:5000/sorted/${activeTab}`)
             .then(res => res.json())
             .then(data => {
-                setCars(data)
+                const result = data.filter((car)=> car?.postedBy === user?.email)
+                setCars(result)
             })
     }, [activeTab])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myCars/${user?.email}`)
+        fetch(`http://localhost:5000/myallCars/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 console.log('mycar', data)
@@ -37,6 +45,8 @@ const MyToys = () => {
             })
 
     }, [user])
+
+    
 
 
     const handleDelete = _id => {
@@ -79,6 +89,7 @@ const MyToys = () => {
 
     return (
         <div className="my-container flex flex-col">
+            <h2 className="text-center text-3xl font-extrabold mb-5">Sorted By Price</h2>
             <div className="text-center w-100 m-auto">
                 <div className="flex justify-evenly items-center">
                     <div className='bg-gray-500'>

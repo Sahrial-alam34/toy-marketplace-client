@@ -9,7 +9,7 @@ import { updateProfile } from 'firebase/auth';
 import GoogleLogin from "../GoogleLogin/GoogleLogin";
 import useTitle from "../../hooks/useTitle";
 const Register = () => {
-    const { createUser} = useContext(AuthContext);
+    const { createUser } = useContext(AuthContext);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
     useTitle('Register')
@@ -50,17 +50,17 @@ const Register = () => {
             })
     }
 
-    const updateUserData = (user, name,photo) =>{
-        updateProfile(user,{
+    const updateUserData = (user, name, photo) => {
+        updateProfile(user, {
             displayName: name,
             photoURL: photo
         })
-        .then(()=>{
-            console.log('user name and url updated')
-        })
-        .catch(error =>{
-            setError(error.message);
-        })
+            .then(() => {
+                console.log('user name and url updated')
+            })
+            .catch(error => {
+                setError(error.message);
+            })
     }
 
 
@@ -75,13 +75,13 @@ const Register = () => {
     //     })
     // }
 
- 
+
     // const handleAccepted = event =>{
     //     setAccepted(event.target.checked)
 
     // }
 
- 
+
     return (
         <div className='my-container w-full min-h-screen flex flex-col lg:flex-row items-start'>
             <div className='relative lg:w-1/2 h-full flex flex-col'>
@@ -144,8 +144,8 @@ const Register = () => {
                         <div className='w-full flex items-center justify-center mt-5'>
                             <p className='text-sm font-normal text-[#060606]'>Already Have an account? <Link to='/login' className='font-semibold underline underline-offset-2 cursor-pointer'>Login</Link> </p>
                         </div>
-                        <p className='text-danger'>{error}</p>
-                        <p className='text-success'>{success}</p>
+                        <p className='text-red-600'>{error}</p>
+                        <p className='text-green-600'>{success}</p>
                         <div className='w-full flex flex-col my-4'>
                             <button className='w-full text-white font-semibold my-2 bg-[#060606] rounded-md p-4 text-center flex items-center justify-center cursor-pointer'>Register </button>
                             <Link to='/login' className='w-full text-[#060606] font-semibold my-2 bg-white border-2 border-black rounded-md p-4 text-center flex items-center justify-center cursor-pointer'>Login  </Link>
@@ -162,7 +162,7 @@ const Register = () => {
                 {/* <button onClick={handleGoogleSignIn} className='w-full bg-white font-semibold my-2 text-[#060606] border-2 border-black rounded-md p-4 text-center flex items-center justify-center cursor-pointer'>
                     <img src={googleIcon} className='h-6 mr-2' alt="" />
                     Sign In With Google </button> */}
-                    <GoogleLogin></GoogleLogin>
+                <GoogleLogin></GoogleLogin>
             </div>
 
 

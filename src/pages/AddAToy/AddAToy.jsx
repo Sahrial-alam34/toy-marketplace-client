@@ -26,6 +26,7 @@ const AddAToy = () => {
 
 
     const onSubmit = (data) => {
+        
        fetch("http://localhost:5000/addCar", {
         method:"POST",
         headers:{
@@ -63,13 +64,13 @@ const AddAToy = () => {
                                     {...register("image")}
                                     placeholder="Toy image link"
                                     type="url"
-                                    defaultValue="https://images.pexels.com/photos/2528118/pexels-photo-2528118.jpeg?auto=compress&cs=tinysrgb&w=600"
+                                    // defaultValue="https://images.pexels.com/photos/2528118/pexels-photo-2528118.jpeg?auto=compress&cs=tinysrgb&w=600"
                                 />
                                 <input
                                     className="text-input p-5 h-10 text-black rounded-lg border-2 border-indigo-400 mb-2 mr-2"
                                     {...register("toyName")}
                                     placeholder="Enter Toy Name"
-                                    defaultValue="Car Toy"
+                                   // defaultValue="Car Toy"
                                 />
                                 <input
                                     className="text-input p-5 h-10 text-black rounded-lg border-2 border-indigo-400 mb-2 mr-2"
@@ -88,7 +89,7 @@ const AddAToy = () => {
 
 
                                 <select className="text-input pl-5 h-10 text-black rounded-lg border-2 border-indigo-400 mb-2 mr-2" {...register("Subcategory")}>
-                                    <option value="truck">Track</option>
+                                    <option value="truck">Truck</option>
                                     <option value="bus">Bus</option>
                                     {/* <option value="Dinky">Dinky</option> */}
                                     <option value="car">Car</option>
@@ -97,14 +98,14 @@ const AddAToy = () => {
                                     className="text-input p-5 h-10 text-black rounded-lg border-2 border-indigo-400 mb-2 mr-2"
                                     {...register("price", { required: true })}
                                     placeholder="Price"
-                                    defaultValue="5k"
+                                   // defaultValue="5k"
                                 />
                                 <input
                                     className="text-input p-5 h-10 text-black rounded-lg border-2 border-indigo-400 mb-2 mr-2"
                                     {...register("rating", { required: true })}
                                     placeholder="Rating"
                                     type="text"
-                                    defaultValue="3.5"
+                                   // defaultValue="3.5"
                                 />
 
                                 <input
@@ -112,7 +113,7 @@ const AddAToy = () => {
                                     {...register("quantity", { required: true })}
                                     placeholder="Quantity"
                                     type="number"
-                                    defaultValue="3"
+                                   // defaultValue="3"
                                 />
 
 

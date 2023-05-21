@@ -95,8 +95,8 @@ const Login = () => {
                         <div className='w-full flex items-center justify-center mt-5'>
                             <p className='text-sm font-normal text-[#060606]'>Do not have an account? <Link to='/register' className='font-semibold underline underline-offset-2 cursor-pointer'>Sign up for free</Link> </p>
                         </div>
-                        <p className='text-danger'>{error}</p>
-                        <p className='text-success'>{success}</p>
+                        <p className='text-red-600'>{error}</p>
+                        <p className='text-green-600'>{success}</p>
                         <div className='w-full flex flex-col my-4'>
                             <button className='w-full text-white font-semibold my-2 bg-[#060606] rounded-md p-4 text-center flex items-center justify-center cursor-pointer'>Login </button>
                             <Link to='/register' className='w-full text-[#060606] font-semibold my-2 bg-white border-2 border-black rounded-md p-4 text-center flex items-center justify-center cursor-pointer'>Register  </Link>

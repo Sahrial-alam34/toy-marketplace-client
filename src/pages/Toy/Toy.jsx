@@ -28,21 +28,23 @@ const Toy = ({ toy }) => {
         //     </div>
         // </div>
 
-        <div className="rounded-xl shadow-lg">
+        <div className="rounded-xl shadow-lg w-[380px] h-[490px]">
             <div className="p-5 flex flex-col">
                 <div className="rounded-xl overflow-hidden">
                     <img className="h-40 w-full" src={image} alt="" />
                 </div>
-                <h5 className="text-2xl md:text-3xl font-medium mt-5 mb-3"> Toy Name: {toyName}</h5>
-                <p className="mt-2">Sub Category: {Subcategory}</p>
-                <p className="mt-2">Seller Name: {displayName}</p>
+                <div className="h-[160px] w-[340px]">
+                    <h5 className="text-2xl md:text-3xl font-medium mt-5 mb-3"> Toy Name: {toyName}</h5>
+                    <p className="mt-2">Sub Category: {Subcategory}</p>
+                    <p className="mt-2">Seller Name: {displayName}</p>
+                </div>
                 <div className="grid grid-cols-2 mt-2">
 
                     <p>Price: {price}</p>
                     <p>Quantity: {quantity}</p>
-                    <p>Price: {price}</p>
+                    
                 </div>
-                <Link to={`/carDetails/${_id}`} className="text-center bg-green-400 text-green-700 py-2 rounded-lg font-semibold mt-4 hover:bg-green-300 focus:scale-95 transition-all duration-200 ease-out">
+                <Link to={`/carDetails/${_id}`} className="text-center bg-green-400 text-green-700 py-2 rounded-lg font-semibold mt-4 hover:bg-green-300 focus:scale-95 transition-all duration-200 ease-out ">
                     <button >View Details</button>
                 </Link>
 

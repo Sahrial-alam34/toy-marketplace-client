@@ -45,7 +45,7 @@ const router = createBrowserRouter([
       {
         path:'/carDetails/:id',
         element:<PrivateRoute><SingleCarDetails></SingleCarDetails></PrivateRoute>,
-        loader:({params}) => fetch(`http://localhost:5000/carDetails/${params.id}`)
+        loader:({params}) => fetch(`https://assignment11-toy-marketplace-react-tailwind-server.vercel.app/carDetails/${params.id}`)
       },
       {
         path: '/blogs',
@@ -64,7 +64,7 @@ const router = createBrowserRouter([
       {
         path:'/updatedCar/:id',
         element:<CarEdit></CarEdit>,
-        loader: ({params})=>fetch(`http://localhost:5000/updatedCars/${params.id}`)
+        loader: ({params})=>fetch(`https://assignment11-toy-marketplace-react-tailwind-server.vercel.app/updatedCars/${params.id}`)
       },
   
 

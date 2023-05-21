@@ -9,7 +9,7 @@ const AllToys = () => {
    // const [allData, setAllData] = useState(false)
     useTitle('All Toys')
     useEffect(() => {
-        fetch("http://localhost:5000/allCars")
+        fetch("https://assignment11-toy-marketplace-react-tailwind-server.vercel.app/allCars")
             .then(res => res.json())
             .then(data => {
                 //console.log('data', data)
@@ -22,7 +22,7 @@ const AllToys = () => {
     // },[])
 
     const handleSearch = () => {
-        fetch(`http://localhost:5000/getCarsByName/${search}`)
+        fetch(`https://assignment11-toy-marketplace-react-tailwind-server.vercel.app/getCarsByName/${search}`)
             .then(res => res.json())
             .then(data => {
                 console.log('src data', data)
@@ -31,7 +31,7 @@ const AllToys = () => {
     }
 
     //     useEffect(() => {
-    //         fetch("http://localhost:5000/allTotalCars")
+    //         fetch("https://assignment11-toy-marketplace-react-tailwind-server.vercel.app/allTotalCars")
     //             .then(res => res.json())
     //             .then(data => {
     //                 //console.log('data', data)

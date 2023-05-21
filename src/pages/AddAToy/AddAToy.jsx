@@ -27,7 +27,7 @@ const AddAToy = () => {
 
     const onSubmit = (data) => {
         
-       fetch("http://localhost:5000/addCar", {
+       fetch("https://assignment11-toy-marketplace-react-tailwind-server.vercel.app/addCar", {
         method:"POST",
         headers:{
             'Content-type':'application/json'

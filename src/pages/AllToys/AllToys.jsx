@@ -15,16 +15,16 @@ const AllToys = () => {
     }, [])
 
     // useEffect(()=>{
-       
+
     // },[])
 
-    const handleSearch = () =>{
+    const handleSearch = () => {
         fetch(`http://localhost:5000/getCarsByName/${search}`)
-        .then(res => res.json())
-        .then(data =>{
-            console.log('src data',data)
-            setToys(data)
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('src data', data)
+                setToys(data)
+            })
     }
 
 
@@ -36,7 +36,7 @@ const AllToys = () => {
                         type="text"
                         className="block w-full px-4 py-2 text-black bg-white border rounded-full focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                         placeholder="Search..."
-                        onChange={(event)=>setSearchText(event.target.value)}
+                        onChange={(event) => setSearchText(event.target.value)}
                     />
                     <button onClick={handleSearch} className="px-4 text-white bg-purple-600 rounded-full ">
                         <svg
@@ -56,18 +56,24 @@ const AllToys = () => {
                     </button>
                 </div>
             </div>
+            <div className="flex item-center justify-center min-h-screen container mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    {toys?.map((toy) => (
+                        <Toy
+                            key={toy._id}
+                            toy={toy}>
 
-            <div className="grid lg:grid-cols-2 mt-5">
-
-                {toys?.map((toy) => (
-                    <Toy
-                        key={toy._id}
-                        toy={toy}>
-
-                    </Toy>
-                ))}
+                        </Toy>
+                    ))}
+                </div>
 
             </div>
+{/* 
+            <div className="grid lg:grid-cols-2 mt-5">
+
+
+
+            </div> */}
         </div>
     );
 };

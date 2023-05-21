@@ -17,11 +17,14 @@ import MyToys from './pages/MyToys/MyToys';
 import PrivateRoute from './routes/PrivateRoute';
 import SingleCarDetails from './pages/SingleCarDetails/SingleCarDetails';
 import CarEdit from './pages/CarEdit/CarEdit';
+import ErrorPage from './pages/ErrorPage/ErrorPage';
+import { Toaster } from 'react-hot-toast';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',
@@ -70,7 +73,9 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
+  
   <React.StrictMode>
+    <Toaster></Toaster>
     <AuthProviders>
       <RouterProvider router={router}></RouterProvider>
     </AuthProviders>

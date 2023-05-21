@@ -12,7 +12,7 @@ const Categories = () => {
 
 
     const handleTabClick = (tabName) => {
-       
+
         setActiveTab(tabName);
     };
 
@@ -31,7 +31,7 @@ const Categories = () => {
             <div className="lg:max-w-7xl mx-auto px-4 py-8">
 
                 <div className="text-center w-100 m-auto">
-                    <div className="tabs d-flex justify-content-center align-items-center">
+                    <div className="flex justify-evenly items-center">
                         <div className='bg-gray-500'>
                             <div
                                 onClick={() => handleTabClick("car")}
@@ -59,7 +59,7 @@ const Categories = () => {
                     </div>
                 </div>
 
-                <div className="grid lg:grid-cols-2 mt-5 ">
+                {/* <div className="grid lg:grid-cols-2 mt-5 ">
 
                     {toys?.map((toy) => (
                         <CarDetails
@@ -68,6 +68,18 @@ const Categories = () => {
 
                         </CarDetails>
                     ))}
+                </div> */}
+                <div className="flex item-center justify-center min-h-screen container mx-auto ">
+
+                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
+                        {toys?.map((toy) => (
+                            <CarDetails
+                                key={toy._id}
+                                toy={toy}>
+
+                            </CarDetails>
+                        ))}
+                    </div>
                 </div>
 
 

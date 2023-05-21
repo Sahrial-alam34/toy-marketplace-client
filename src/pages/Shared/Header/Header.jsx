@@ -191,7 +191,7 @@ const Header = () => {
                                     <div>
                                         <Link
                                             to='/'
-                                            aria-label='HeroGadget'
+                                            aria-label='HouseOfToyCar'
                                             title='HeroGadget'
                                             className='inline-flex items-center'
                                         >
@@ -199,7 +199,7 @@ const Header = () => {
                                                 <img className='h-[18px] w-[18px]' src={logo} alt="" />
                                             </div>
                                             <span className='ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase'>
-                                                HTC
+                                                House Of Cars
                                             </span>
                                         </Link>
                                     </div>
@@ -220,7 +220,7 @@ const Header = () => {
                                     </div>
                                 </div>
                                 <nav className='flex flex-col'>
-                                    <div className='items-center  space-x-8 '>
+                                    <div className='items-center space-x-8 lg:flex'>
 
                                         <NavLink
                                             to='/'
@@ -233,31 +233,90 @@ const Header = () => {
 
 
                                         <NavLink
-                                            to='/shop'
-                                            aria-label='Shop'
-                                            title='Shop'
+                                            to='/allToys'
+                                            aria-label='All Toys'
+                                            title='All Toys'
                                             className={({ isActive }) => (isActive ? 'active' : 'default')}
                                         >
-                                            Shop
+                                            All Toys
+                                        </NavLink>
+                                        {
+                                            user &&
+                                            <NavLink
+                                                to='/myToys'
+                                                aria-label='My Toys'
+                                                title='My Toys'
+                                                className={({ isActive }) => (isActive ? 'active' : 'default')}
+                                            >
+                                                My Toys
+                                            </NavLink>
+                                        }
+                                        {
+                                            user &&
+                                            <NavLink
+                                                to='/addAToy'
+                                                aria-label='Add A Toy'
+                                                title='Add A Toy'
+                                                className={({ isActive }) => (isActive ? 'active' : 'default')}
+                                            >
+                                                Add A Toy
+                                            </NavLink>
+                                        }
+                                        <NavLink
+                                            to='/blogs'
+                                            aria-label='Blogs'
+                                            title='Blogs'
+                                            className={({ isActive }) => (isActive ? 'active' : 'default')}
+                                        >
+                                            Blogs
                                         </NavLink>
 
-                                        <Link to='/cart' aria-label='Cart' title='Cart'>
 
-                                        </Link>
 
                                     </div>
                                     {
-                                        user ? <div className='flex gap-5'>
+                                        user ? <div className=' space-x-8 flex '>
 
-                                            <NavLink
-                                                to='/register'
-                                                aria-label='Register'
-                                                title='Register'
-                                                className={({ isActive }) => (isActive ? 'active' : 'default')}
-                                            >
-                                                Photo
-                                            </NavLink>
-                                            <NavLink>
+
+                                            <div>
+                                                <div className="
+                            relative 
+                            before:content-[attr(data-tip)]
+                            before:px-3 before:py-2;
+                            before:left-10 before:top-0
+                            before:w-max before:max-w-xs
+                            before:-translate-x-1/2 before:-translate-y-full
+                            before:bg-gray-700 before:text-white
+                            before:rounded-md before:opacity-0
+                            before:transition-all
+
+                            after:absolute
+                            after:left-1/2 after:top-0
+                            after:h-0 after:w-0
+                            after:-translate-x-1/2 after:border-8
+                            after:border-t-gray-700
+                            after:border-l-transparent
+                            after:border-b-transparent
+                            after:border-r-transparent
+                            after:opacity-0
+                            after:transition-all 
+ 
+                            hover:before:opacity-100 
+
+
+                             " data-tip={user.displayName}>
+                                                    <button className="mt-2 h-10 w-10  rounded-full bg-gray-300">
+                                                        <img className="rounded-full h-full w-full" src={user.photoURL} alt={user.displayName} />
+                                                    </button>
+                                                </div>
+                                                {/* <div className="absolute bottom-0 left-0 transform translate-y-full -translate-x-1/2">
+                                <div className="py-2 px-4 bg-gray-800 text-white rounded text-center">
+                                    {user.displayName}
+                                </div>
+                            </div> */}
+
+                                            </div>
+                                            <NavLink className='mt-2'>
                                                 <button
                                                     onClick={handleLogOut}
                                                     className={({ isActive }) => (isActive ? 'active' : 'default')}
@@ -267,7 +326,7 @@ const Header = () => {
                                             </NavLink>
 
                                         </div> :
-                                            <div className='flex gap-5'>
+                                            <div className=' space-x-8 flex gap-5'>
 
                                                 <NavLink
                                                     to='/login'
@@ -289,15 +348,14 @@ const Header = () => {
 
                                             </div>
                                     }
+                                
                                 </nav>
                             </div>
                         </div>
                     )}
                 </div>
             </div>
-            <div>
 
-            </div>
         </div>
     )
 }

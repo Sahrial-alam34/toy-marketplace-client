@@ -22,7 +22,7 @@ const CarEdit = () => {
         //https://i.ibb.co/9bv7B6g/Mehmet-G-rs.jpg
 
         //send data to the server
-        fetch(`https://assignment11-toy-marketplace-react-tailwind-server.vercel.app/updatedACar/${_id}`,{
+        fetch(`https://assignment11-toy-marketplace-react-tailwind-server.vercel.app/ updatedACar/${_id}`,{
             method:'PUT',
             headers:{
                 'content-type':'application/json'

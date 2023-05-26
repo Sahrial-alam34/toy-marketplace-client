@@ -21,14 +21,14 @@ const MyToys = () => {
     };
 
     // useEffect(() => {
-    //     fetch(`https://assignment11-toy-marketplace-react-tailwind-server.vercel.app/sorted/${activeTab}`)
+    //     fetch(`https://assignment11-toy-marketplace-react-tailwind-server.vercel.app/ sorted/${activeTab}`)
     //         .then(res => res.json())
     //         .then(data => {
     //             setCars(data)
     //         })
     // }, [activeTab])
     useEffect(() => {
-        fetch(`https://assignment11-toy-marketplace-react-tailwind-server.vercel.app/sorted/${activeTab}`)
+        fetch(`https://assignment11-toy-marketplace-react-tailwind-server.vercel.app/ sorted/${activeTab}`)
             .then(res => res.json())
             .then(data => {
                 const result = data.filter((car) => car?.postedBy === user?.email)
@@ -37,7 +37,7 @@ const MyToys = () => {
     }, [activeTab])
 
     useEffect(() => {
-        fetch(`https://assignment11-toy-marketplace-react-tailwind-server.vercel.app/myallCars/${user?.email}`)
+        fetch(`https://assignment11-toy-marketplace-react-tailwind-server.vercel.app/ myallCars/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 //console.log('mycar', data)
@@ -63,7 +63,7 @@ const MyToys = () => {
             if (result.isConfirmed) {
                 //console.log('confirm')
 
-                fetch(`https://assignment11-toy-marketplace-react-tailwind-server.vercel.app/myCars/${_id}`, {
+                fetch(`https://assignment11-toy-marketplace-react-tailwind-server.vercel.app/ myCars/${_id}`, {
                     method: 'DELETE',
 
                 })

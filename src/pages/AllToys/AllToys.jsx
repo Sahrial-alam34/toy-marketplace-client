@@ -6,23 +6,27 @@ import useTitle from "../../hooks/useTitle";
 const AllToys = () => {
     const [toys, setToys] = useState([]);
     const [search, setSearchText] = useState("");
-   // const [allData, setAllData] = useState(false)
+    // const [allData, setAllData] = useState(false)
+    const [page, setPage] = useState(1);
+    const [limit, setLimit] = useState(9);
+
+
     useTitle('All Toys')
     useEffect(() => {
-        fetch("https://assignment11-toy-marketplace-react-tailwind-server.vercel.app/allCars")
+        fetch(`https://assignment11-toy-marketplace-react-tailwind-server.vercel.app/ allCars?limit=${limit}&page=${page}`)
             .then(res => res.json())
             .then(data => {
                 //console.log('data', data)
                 setToys(data)
             })
-    }, [])
+    }, [limit, page])
 
     // useEffect(()=>{
 
     // },[])
 
     const handleSearch = () => {
-        fetch(`https://assignment11-toy-marketplace-react-tailwind-server.vercel.app/getCarsByName/${search}`)
+        fetch(`https://assignment11-toy-marketplace-react-tailwind-server.vercel.app/ getCarsByName/${search}`)
             .then(res => res.json())
             .then(data => {
                 console.log('src data', data)
@@ -31,7 +35,7 @@ const AllToys = () => {
     }
 
     //     useEffect(() => {
-    //         fetch("https://assignment11-toy-marketplace-react-tailwind-server.vercel.app/allTotalCars")
+    //         fetch("https://assignment11-toy-marketplace-react-tailwind-server.vercel.app/ allTotalCars")
     //             .then(res => res.json())
     //             .then(data => {
     //                 //console.log('data', data)
@@ -39,11 +43,11 @@ const AllToys = () => {
     //             })
     //     }, [allData])
     // const handleAllData = (allData) =>{
-        
-    //     setAllData(allData);
-       
 
-    
+    //     setAllData(allData);
+
+
+
     // }
 
 
@@ -89,13 +93,40 @@ const AllToys = () => {
 
                         </Toy>
                     ))}
+
                 </div>
+
+
+            </div>
+            <div className=" flex justify-center btn-group mt-5">
+
+
+                <button className="btn btn-success" onClick={() => {
+                    page === 1 ? setPage(1) : setPage(page - 1)
+                }}
+                    disabled={page === 1}
+                >«</button>
+                <button className="btn btn-success">{page}</button>
+                <button className="btn btn-success" onClick={() => {
+                    page === Math.round(1000 / limit) ? setPage(Math.round(1000 / limit)) : setPage(page + 1)
+                }}
+                    disabled={page === Math.round(1000 / limit)}
+                >«</button>
+
+                <select className="select select-primary max-w-sm ml-5 " value={limit} onChange={e=>setLimit(e.target.value)}>
+                    
+                    
+                    <option value={10}>10</option>
+                    <option value={15}>15</option>
+                    <option value={20}>20</option>
+                </select>
+
 
             </div>
             {/* 
             <div className="grid lg:grid-cols-2 mt-5">
 
-
+            
 
             </div> */}
             {/* <div className="text-center">
